@@ -1,0 +1,16 @@
+<main class="container">
+  <section class="section">
+    <h1 class="title">Todo</h1>
+    <%= turbo_stream_from :tasks %>
+
+    <%= turbo_frame_tag :new_task do %>
+      <%= render 'form', task: @task %>
+    <% end %>
+
+    <div class="box mt-2 mb-2">
+      <%= turbo_frame_tag :tasks do %>
+        <%= render @tasks %>
+      <% end %>
+    </div>
+  </section>
+</main>
