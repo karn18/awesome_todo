@@ -21,7 +21,7 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
     respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.replace(:new_task, partial: 'tasks/edit', locals: { task: @task }) }
+      format.turbo_stream { render turbo_stream: turbo_stream.replace(:new_task, partial: 'tasks/turbo_form', locals: { task: @task }) }
     end
   end
 
@@ -36,7 +36,7 @@ class TasksController < ApplicationController
   def update
     @task.update!(task_params)
     respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.replace(:new_task, partial: 'tasks/new', locals: { task: Task.new }) }
+      format.turbo_stream { render turbo_stream: turbo_stream.replace(:new_task, partial: 'tasks/turbo_form', locals: { task: Task.new }) }
     end
   end
 
